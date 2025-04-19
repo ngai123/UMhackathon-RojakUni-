@@ -657,13 +657,13 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Profit factor = sum(positive_pnls) / |sum(negative_pnls)|
         Returns infinity if no losses, 0 if no gains and no losses
       ```
-    5. System Quality Number (SQN)
-      
+   5. System Quality Number (SQN)
+      ```
           Formula: √(len(pnl_values)) * pnl_mean / pnl_std
           evaluating the system's consistency and trade performance, especially in backtests
           SQN = sqrt(len(pnl_values)) * pnl_mean / pnl_std
           Higher SQN -> more reliable strategy
-      
+      ```
 
 
 
