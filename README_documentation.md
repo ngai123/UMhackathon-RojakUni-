@@ -666,7 +666,6 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
       ```
  - Plot Results
     1. Portfolio Value
-      ```
          Trade points:
          Green ^ = Buy
          Red v = Sell
@@ -674,13 +673,12 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
          Blue line - Portfolio's value over time
          Orange line - The asset's price
          Use twinx() to plot price and portfolio value on separate y-axes
-       ```
-    2. Cumulative Return
-        ```  
+     
+    2. Cumulative Return 
          Green Line - Cumulative return percentage
          Gray Dashed line - Buy & hold BTC return for comparison
          Shows relative performance between active strategy and passive approach
-        ```
+     
 
 
 
