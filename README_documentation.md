@@ -664,7 +664,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           SQN = sqrt(len(pnl_values)) * pnl_mean / pnl_std
           Higher SQN -> more reliable strategy
       ```
-   - Plot Results
+ - Plot Results
      1. Portfolio Value
       ```
          Trade points:
