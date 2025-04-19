@@ -367,6 +367,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
          ``` 
          
 - Lagged features
+  
         ``` 
           👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
           Calculation: Value of the base feature shifted back by 'lag' periods (1, 3, or 7).
@@ -378,19 +379,19 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         ``` 
  - Flow acceleration
 
-        ``` 
-          👉inflow_acceleration
-           Calculation: Second difference of Total Inflow
-           Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
-           decreasing at a slower rate). Negative acceleration means the opposite. Captures shifts in the momentum of inflows.
-           Potential signal: 
-           Peaks/troughs in acceleration might precede turning points in inflow trends or price.
+         ``` 
+           👉inflow_acceleration
+            Calculation: Second difference of Total Inflow
+            Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
+            decreasing at a slower rate). Negative acceleration means the opposite. Captures shifts in the momentum of inflows.
+            Potential signal: 
+            Peaks/troughs in acceleration might precede turning points in inflow trends or price.
   
-           👉outflow_acceleration
-           Calculation: Second difference of Total Outflow
-           Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
-           Potential signal: 
-           Similar to inflow acceleration, could signal turning points
+            👉outflow_acceleration
+            Calculation: Second difference of Total Outflow
+            Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
+            Potential signal: 
+            Similar to inflow acceleration, could signal turning points
            
         ```
 - Moving average features of on-chain metrics
@@ -454,7 +455,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
      ``` 
         👉inflow_momentum
         Calculation: Ratio of short-term MA (7) to long-term MA (30) for Total Inflow, centered around 0.
-        Purpose: Measures the momentum of exchange inflows. Positive values indicate the short-term average inflow is higher than the long-term average (upward            momentum), negative values indicate the opposite.
+        Purpose: Measures the momentum of exchange inflows. Positive values indicate the short-term average inflow is higher than the long-term average (upward            momentum), negative values indicate the           opposite.
         Potential signal:
         Crossovers through 0 or extreme positive/negative values could signal shifts in inflow strength.
   
@@ -614,14 +615,45 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
        Calculate portfolio value = current_cash + (current_btc_held * current_price)
      ```
 
-  5. Post Loop Calculations
-      ```
+   5. Post Loop Calculations
+       ```
         daily_return = portfolio_value.pct_change()
         cumulative_return = (portfolio_value / initial_cash) - 1
         Final trade_history with partial sell information
       ```
       
-
+ - Calculate_metrics
+    1. Return Calculations
+       ```
+        Total return = (final_value / initial_cash) - 1
+        Annual return = total_return / (len(results) / (365 * 24)) for hourly data
+       ```
+    2. Sharpe Ratio Calculation (comparing portfolios or strategies over time)
+       ```
+          Formula: (pnl_mean / pnl_std) * √(365 * 24)
+          Uses hourly adjustment factor √(365 * 24)
+          Returns 0 if insufficient data or zero standard deviation
+       ```
+    3. Max Drawdown: How far the portfolio fell from its peak
+       ```
+         Formula: Drawdown(t) = (Portfolio_Value(t) - Rolling_Max(t)) / Rolling_Max(t)
+         Max_Drawdown = minimum value of all drawdowns
+         Uses safe_rolling_max with NaN handling to avoid division by zero
+       ```
+    4. Trades and Win Rate
+       ```
+        Total trades = (trade_size > 0).sum()
+        Win rate = positive_pnls / total_pnls
+        Profit factor = sum(positive_pnls) / |sum(negative_pnls)|
+        Returns infinity if no losses, 0 if no gains and no losses
+      ```
+    5. System Quality Number (SQN)
+      '''
+          Formula: √(len(pnl_values)) * pnl_mean / pnl_std
+          evaluating the system's consistency and trade performance, especially in backtests
+          SQN = sqrt(len(pnl_values)) * pnl_mean / pnl_std
+          Higher SQN -> more reliable strategy
+      '''
 
 
 
