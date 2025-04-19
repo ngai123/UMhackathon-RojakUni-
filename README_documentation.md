@@ -657,13 +657,30 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Profit factor = sum(positive_pnls) / |sum(negative_pnls)|
         Returns infinity if no losses, 0 if no gains and no losses
       ```
-   5. System Quality Number (SQN)
+   - System Quality Number (SQN)
       ```
           Formula: √(len(pnl_values)) * pnl_mean / pnl_std
           evaluating the system's consistency and trade performance, especially in backtests
           SQN = sqrt(len(pnl_values)) * pnl_mean / pnl_std
           Higher SQN -> more reliable strategy
       ```
+   - Plot Results
+     1. Portfolio Value
+      ```
+         Trade points:
+         Green ^ = Buy
+         Red v = Sell
+         Yellow o = Hold (sampled, to avoid clutter)
+         Blue line - Portfolio's value over time
+         Orange line - The asset's price
+         Use twinx() to plot price and portfolio value on separate y-axes
+       ```
+      2. Cumulative Return
+        ```  
+         Green Line - Cumulative return percentage
+         Gray Dashed line - Buy & hold BTC return for comparison
+         Shows relative performance between active strategy and passive approach
+        ```
 
 
 
