@@ -1,6 +1,7 @@
 # Project Title: ON-CHAIN DATA AUTOMATED TRADING MACHINE
 ## Overview
 This project focuses on applying statistical-based Hidden Markov Models(HMM), Natural Language Processing(NLP) that act as indicators/ filters that enhance the entire backtest process, in order to boost profitability by hitting a higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
+In case the slides pdf is unusable: https://www.canva.com/design/DAGkx0Caa0c/Pt7mE2aNObOEtgHcccmw2Q/editutm_content=DAGkx0Caa0c&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ## Tools Used
 - Python
