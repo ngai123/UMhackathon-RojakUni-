@@ -304,6 +304,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
   - Top wallet concentration
     
       ```
+      
         👉top10_dominance_inflow
         Calculation: Top 10 Inflow / Total Inflow
         Purpose: Measures the proportion of total exchange inflows originating from the 10 largest inflow transactions (proxy for whales). A high value indicates 
@@ -317,11 +318,13 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         significant amounts, potentially for long-term holding or accumulation.
         Potential signal: 
         Sudden increases might indicate whale accumulation.
+      
        ```
 
 
   - Net flow features
-       ``` 
+       ```
+       
           👉netflow_sign
           Calculation: Sign (+1, -1, 0) of Total Netflow
           Purpose: Provides a clear, simple indicator of the immediate net direction of coin movement relative to exchanges (positive = net inflow, negative = net 
@@ -342,6 +345,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
          significant relative to trading volume, potentially having a larger price impact.
          Potential signal: 
          large positive/negative values coinciding with price moves might confirm flow-driven pressure.
+       
         ``` 
 
 
@@ -351,19 +355,23 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
            👉tx_count_per_volume
            Calculation: Transaction Count / Trading Volume
            Purpose: Compares the frequency of on-chain exchange-related transactions to the trading volume. A high value might indicate many small transactions 
-           relative to volume (potentially retail activity), while a low value might suggest fewer, larger transactions or high volume driven by off-chain activity.
+           relative to volume (potentially retail activity), while a low value might suggest fewer, larger transactions or high volume driven by off-chain 
+           activity.
            Potential signal: 
            Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
          ```
 
  - Flow rate changes
-         ``` 
+   
+         ```
+   
            👉flow_mean_change
             Calculation: Percentage change in the mean flow value from the previous period.
             Purpose: Measures the short-term change in the average size of transactions involved in exchange flows. An increasing value indicates larger average 
             flow sizes, potentially signaling increased conviction or larger players becoming active.
             Potential signal: 
             Sharp increases/decreases could precede volatility or trend changes.
+   
          ``` 
          
 - Lagged features
@@ -379,7 +387,8 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         ``` 
  - Flow acceleration
 
-         ``` 
+         ```
+   
            👉inflow_acceleration
             Calculation: Second difference of Total Inflow
             Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
@@ -402,7 +411,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           horizons (short, medium, long).
           Potential signal: 
           Crossovers between different MA windows or between the metric and its MA can generate trend signals.
-
+      ``` 
  - Volatility in on-chain metrics
      ``` 
          👉inflow_volatility 
