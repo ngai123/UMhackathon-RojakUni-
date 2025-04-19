@@ -220,9 +220,8 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
      📌 REST API with Flask/FastAPI backend for real-time sentiment scoring  
      ```
      
-### 4. LSTM_CNN OHLCV
 
-### 5. Data Manipulation
+### Data Manipulation
 #### Part 1 - Initial Data Standardization and Cleaning
    - Loads Raw Data (‘output_data_with_regime.csv’)
    - Apply Datetime Rounding - rounding seconds (output_data_with_regime)
@@ -347,23 +346,24 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
 
 
  - Transaction count features
+   
         ``` 
-          👉tx_count_per_volume
-          Calculation: Transaction Count / Trading Volume
-          Purpose: Compares the frequency of on-chain exchange-related transactions to the trading volume. A high value might indicate many small transactions 
-          relative to volume (potentially retail activity), while a low value might suggest fewer, larger transactions or high volume driven by off-chain activity.
-          Potential signal: 
-          Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
+           👉tx_count_per_volume
+           Calculation: Transaction Count / Trading Volume
+           Purpose: Compares the frequency of on-chain exchange-related transactions to the trading volume. A high value might indicate many small transactions 
+           relative to volume (potentially retail activity), while a low value might suggest fewer, larger transactions or high volume driven by off-chain activity.
+           Potential signal: 
+           Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
          ```
 
  - Flow rate changes
          ``` 
-          👉flow_mean_change
-          Calculation: Percentage change in the mean flow value from the previous period.
-          Purpose: Measures the short-term change in the average size of transactions involved in exchange flows. An increasing value indicates larger average 
-          flow sizes, potentially signaling increased conviction or larger players becoming active.
-          Potential signal: 
-          Sharp increases/decreases could precede volatility or trend changes.
+           👉flow_mean_change
+            Calculation: Percentage change in the mean flow value from the previous period.
+            Purpose: Measures the short-term change in the average size of transactions involved in exchange flows. An increasing value indicates larger average 
+            flow sizes, potentially signaling increased conviction or larger players becoming active.
+            Potential signal: 
+            Sharp increases/decreases could precede volatility or trend changes.
          ``` 
          
 - Lagged features
